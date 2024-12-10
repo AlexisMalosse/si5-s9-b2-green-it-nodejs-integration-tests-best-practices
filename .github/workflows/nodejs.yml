@@ -44,7 +44,8 @@ jobs:
     # Run echo modified files
     - run: echo "${{ github.event.pull_request.head }}"
     - run: echo "${{ github.repository }}"
-    - run: echo "${{ github.event.commits }}"
+    # Json stringify github.event.commits
+    - run: echo "${{ toJson(github.event.commits) }}"
 
   test-jest:
     runs-on: ubuntu-latest
