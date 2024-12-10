@@ -30,6 +30,14 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y docker-compose
+
+    - name: Cache node_modules
+      uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
   
     - run: npm ci
     - run: npm test
