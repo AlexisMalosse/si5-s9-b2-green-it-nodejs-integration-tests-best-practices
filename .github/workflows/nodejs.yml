@@ -50,6 +50,13 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: "${{ steps.nvm.outputs.NVMRC }}"
+    - name: Use node_modules cache
+      uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: ${{ needs.build.outputs.cache-node-modules }}
+        restore-keys: |
+          ${{ runner.os }}-node-
     - run: npm test
 
   test-nestjs:
@@ -61,6 +68,13 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: "${{ steps.nvm.outputs.NVMRC }}"
+    - name: Use node_modules cache
+      uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: ${{ needs.build.outputs.cache-node-modules }}
+        restore-keys: |
+          ${{ runner.os }}-node-
     - run: npm run test:nestjs
 
   test-mocha:
@@ -72,4 +86,11 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: "${{ steps.nvm.outputs.NVMRC }}"
+    - name: Use node_modules cache
+      uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: ${{ needs.build.outputs.cache-node-modules }}
+        restore-keys: |
+          ${{ runner.os }}-node-
     - run: npm run test:mocha
