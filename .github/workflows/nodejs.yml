@@ -42,10 +42,9 @@ jobs:
     - run: npm i
     # - run: echo "test"
     # Run echo modified files
-    - run: echo "${{ github.event.pull_request.head.repo.full_name }}"
+    - run: echo "${{ github.event.pull_request.head }}"
     - run: echo "${{ github.repository }}"
-    - run: echo "${{ github.event.pull_request.head.ref }}"
-    - run: echo "${{ github.event.commits.*.modified }}"
+    - run: echo "${{ github.event.commits }}"
 
   test-jest:
     runs-on: ubuntu-latest
