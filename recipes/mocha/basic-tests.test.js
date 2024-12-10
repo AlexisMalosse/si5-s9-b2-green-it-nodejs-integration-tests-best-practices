@@ -18,6 +18,7 @@ const expect = chai.expect;
 // all the tests to approach with a shortened syntax
 let axiosAPIClient;
 
+let test;
 const mailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 before(async () => {
