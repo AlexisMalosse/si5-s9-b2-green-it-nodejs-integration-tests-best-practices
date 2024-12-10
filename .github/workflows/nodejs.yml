@@ -41,6 +41,8 @@ jobs:
   
     - run: npm i
     # - run: echo "test"
+    # Run echo modified files
+    - run: echo "${{ github.event.commits.*.modified }}"
 
   test-jest:
     runs-on: ubuntu-latest
