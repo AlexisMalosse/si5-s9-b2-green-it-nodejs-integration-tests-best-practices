@@ -45,7 +45,7 @@ jobs:
       run: npm i
       if: steps.cache-node-modules.outputs.cache-hit != 'true'
 
-    - run: echo "${{ steps.install.outputs }}"
+    - run: echo "${{ toJson(steps.install.outputs) }}"
     - name: Cache dependencies if just installed
       if: steps.install.outputs
       uses: actions/cache@v2
