@@ -54,7 +54,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: node_modules
-        key: ${{ needs.build.outputs.cache-node-modules }}
+        key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-node-
     - run: npm test
@@ -72,7 +72,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: node_modules
-        key: ${{ needs.build.outputs.cache-node-modules }}
+        key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-node-
     - run: npm run test:nestjs
@@ -90,7 +90,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: node_modules
-        key: ${{ needs.build.outputs.cache-node-modules }}
+        key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-node-
     - run: npm run test:mocha
