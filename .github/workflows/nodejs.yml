@@ -45,7 +45,7 @@ jobs:
     - run: echo "${{ github.event.pull_request.head }}"
     - run: echo "${{ github.repository }}"
     # Json stringify github.event.commits
-    - run: echo "${{ toJson(github.event.commits) }}"
+    - run: echo "${{ toJson(github.event.commits.*.modified) }}"
 
   test-jest:
     runs-on: ubuntu-latest
