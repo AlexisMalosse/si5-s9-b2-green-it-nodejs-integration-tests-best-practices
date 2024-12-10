@@ -46,7 +46,7 @@ jobs:
       if: steps.cache-node-modules.outputs.cache-hit != 'true'
 
     - name: Cache dependencies if just installed
-      if: steps.install.outputs.exitCode == '0'
+      if: steps.install.outputs.run == 'npm i'
       uses: actions/cache@v2
       with:
         path: node_modules
