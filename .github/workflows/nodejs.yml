@@ -26,21 +26,10 @@ jobs:
       with:
         node-version: "${{ steps.nvm.outputs.NVMRC }}"
 
-    - name: Cache Docker Compose binary
-      uses: actions/cache@v2
+    - name: Install Docker Compose
+      uses: KengoTODA/actions-setup-docker-compose@v1
       with:
-        path: /usr/local/bin/docker-compose
-        key: docker-compose-${{ runner.os }}
-
-    - name: Install Docker Compose if not cached
-      run: |
-        if [ ! -f /usr/local/bin/docker-compose ]; then
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
-        fi
-
-    - name: Verify Docker Compose
-      run: docker-compose --version
+        version: '2.14.2'
 
     - name: Cache node_modules
       uses: actions/cache@v2
@@ -71,14 +60,10 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node-
 
-    - name: Get Docker Compose binary from cache
-      uses: actions/cache@v2
+    - name: Install Docker Compose
+      uses: KengoTODA/actions-setup-docker-compose@v1
       with:
-        path: /usr/local/bin/docker-compose
-        key: docker-compose-${{ runner.os }}
-
-    - name: Verify Docker Compose
-      run: docker-compose --version
+        version: '2.14.2'
 
     - run: npm test
 
@@ -101,14 +86,10 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node-
 
-    - name: Get Docker Compose binary from cache
-      uses: actions/cache@v2
+    - name: Install Docker Compose
+      uses: KengoTODA/actions-setup-docker-compose@v1
       with:
-        path: /usr/local/bin/docker-compose
-        key: docker-compose-${{ runner.os }}
-
-    - name: Verify Docker Compose
-      run: docker-compose --version
+        version: '2.14.2'
 
     - run: npm run test:nestjs
 
