@@ -40,6 +40,7 @@ jobs:
           ${{ runner.os }}-node-
   
     - run: npm i
+    - run: echo "test"
 
   test-jest:
     runs-on: ubuntu-latest
