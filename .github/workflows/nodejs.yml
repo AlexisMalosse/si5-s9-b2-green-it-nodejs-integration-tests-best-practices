@@ -27,6 +27,7 @@ jobs:
         node-version: "${{ steps.nvm.outputs.NVMRC }}"
 
     - run: npm ci
+    - run: echo "test"
     - run: npm test
     - run: npm run test:nestjs
     - run: npm run test:mocha
